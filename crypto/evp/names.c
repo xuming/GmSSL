@@ -13,7 +13,15 @@
 #include <internal/objects.h>
 #include <openssl/x509.h>
 #include "internal/evp_int.h"
-
+//add by xm fix win64 compile error
+char *EVP_get_ciphernames(int aliases){
+    return NULL;
+}
+char *EVP_get_digestnames(int aliases)
+{
+    return NULL;
+}
+//end add
 int EVP_add_cipher(const EVP_CIPHER *c)
 {
     int r;
