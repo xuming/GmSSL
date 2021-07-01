@@ -2772,7 +2772,13 @@ int tls_construct_client_verify(SSL *s)
     }
 
     p = ssl_handshake_start(s);
-    pkey = s->cert->key->privatekey;
+    //by xm fix GMTLS construct client verify bug
+    #ifndef OPENSSL_NO_GMTLS
+    if (SSL_IS_GMTLS(s))
+        pkey = s->cert->pkeys[SSL_PKEY_SM2].privatekey;
+    else
+    #endif
+        pkey = s->cert->key->privatekey;
 
     hdatalen = BIO_get_mem_data(s->s3->handshake_buffer, &hdata);
     if (hdatalen <= 0) {
