@@ -216,10 +216,10 @@ static int ssl_set_pkey(CERT *c, EVP_PKEY *pkey)
 #ifdef GMTLS_DEBUG
     switch (i) {
     case SSL_PKEY_SM2:
-        fprintf(stderr, "[GMTLS_DEBUG] set sm2 signing private key\n");
+        fprintf(stderr, "[GMTLS] set sm2 signing private key\n");
         break;
     case SSL_PKEY_SM2_ENC:
-        fprintf(stderr, "[GMTLS_DEBUG] set sm2 decryption private key\n");
+        fprintf(stderr, "[GMTLS] set sm2 decryption private key\n");
         break;
     }
 #endif
