@@ -879,10 +879,10 @@ static int gmtls_process_ske_sm2(SSL *s, PACKET *pkt, int *al)
 		SSLerr(SSL_F_GMTLS_PROCESS_SKE_SM2, ERR_R_SM2_LIB);
 		goto end;
 	}
-
+#ifdef GMTLS_DEBUG
 	{ int i; printf("Z="); for (i=0;i<zlen;i++) printf("%02X",z[i]); printf("\n"); }
 	{ int i; printf("C="); for (i=0;i<n;i++) printf("%02X",buf[i]); printf("\n"); }
-
+#endif
 
 	if (EVP_VerifyUpdate(md_ctx, z, zlen) <= 0
 		|| EVP_VerifyUpdate(md_ctx, &(s->s3->client_random[0]),
